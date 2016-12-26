@@ -145,18 +145,15 @@ public class Maze
 	//highway
 	public boolean buildHighway(int highwayNumber) {
 		Node startNode = getHighwayStartNode();
-		//System.out.println("highway start node" + startNode.getX() + "-"+ startNode.getY());
 		boolean highwayIncomplete = true;
 		
-		while (highwayIncomplete ) {
+		while (highwayIncomplete) {
 			validHighway = true;
 			boolean done = makeHighway(startNode);
 			if (done == false) {
 				clear();
 			}
 			if (done == true) {
-//				System.out.println("highway done");
-//				System.out.println("end point "+highway.get(highway.size()-1).getX() +"--"+ highway.get(highway.size()-1).getY());
 				reflectHighway(highway, highwayNumber);
 				highway.clear();
 				highwayIncomplete = false;
@@ -182,7 +179,6 @@ public class Maze
 	}
 	
 	
-	// new\
 	public ArrayList<Node> getEightCoordinates()
 	{
 
@@ -261,7 +257,9 @@ public class Maze
 		Node start = startNode;
 		char prevDirection = 'c';
 		while (boundaryCondition) {
-			if (highway.size() != 0) {start = highway.get(highway.size() - 1);};
+			if (highway.size() != 0) {
+				start = highway.get(highway.size() - 1);
+			}
 			char c = getDirection(prevDirection, startNode);
 			if (c == 'r' && prevDirection == 'l' ||  c == 'l' && prevDirection == 'r' ||c == 'u' && prevDirection == 'd' ||c == 'd' && prevDirection == 'u') {
 				return false;
