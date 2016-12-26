@@ -75,13 +75,13 @@ public class mainFile {
 							
 							sCurrentLine = read.readLine();
 							String mazeSize[] = sCurrentLine.split(",");
-							m.MazeRowCount =  Integer.valueOf(mazeSize[0]);
-							m.MazeColCount =  Integer.valueOf(mazeSize[1]);
+							Maze.MazeRowCount =  Integer.valueOf(mazeSize[0]);
+							Maze.MazeColCount =  Integer.valueOf(mazeSize[1]);
 							
-							for (int i = 0; i< m.MazeRowCount; i++) {
+							for (int i = 0; i< Maze.MazeRowCount; i++) {
 								sCurrentLine = read.readLine();
 								String mazeRow[] = sCurrentLine.split(",");
-								for (int j = 0; j < m.MazeColCount; j++) {
+								for (int j = 0; j < Maze.MazeColCount; j++) {
 									switch(mazeRow[j]) {
 									case "0":
 										m.nodes[i][j].setBlocked(0);
@@ -97,48 +97,32 @@ public class mainFile {
 										m.nodes[i][j].setHighway(false);
 										break;
 									case "a1":
-										m.nodes[i][j].setHighway(true);
-										m.nodes[i][j].setBlocked(1);
-										m.nodes[i][j].highwayNumber = 1;
+										setHighwayOnNode(m.nodes[i][j], 1);
 										break;
 									case "a2":
-										m.nodes[i][j].setHighway(true);
-										m.nodes[i][j].setBlocked(1);
-										m.nodes[i][j].highwayNumber = 2;
+										setHighwayOnNode(m.nodes[i][j], 2);
 										break;
 									case "a3":
-										m.nodes[i][j].setHighway(true);
-										m.nodes[i][j].setBlocked(1);
-										m.nodes[i][j].highwayNumber = 3;
+										setHighwayOnNode(m.nodes[i][j], 3);
 										break;
 									case "a4":
-										m.nodes[i][j].setHighway(true);
-										m.nodes[i][j].setBlocked(1);
-										m.nodes[i][j].highwayNumber = 4;
+										setHighwayOnNode(m.nodes[i][j], 4);
 										break;
 									case "b1":
-										m.nodes[i][j].setHighway(true);
-										m.nodes[i][j].setBlocked(1);
+										setHighwayOnNode(m.nodes[i][j], 1);
 										m.nodes[i][j].setToHardToTraverse();
-										m.nodes[i][j].highwayNumber = 1;
 										break;
 									case "b2":
-										m.nodes[i][j].setHighway(true);
-										m.nodes[i][j].setBlocked(1);
+										setHighwayOnNode(m.nodes[i][j], 2);
 										m.nodes[i][j].setToHardToTraverse();
-										m.nodes[i][j].highwayNumber = 2;
 										break;
 									case "b3":
-										m.nodes[i][j].setHighway(true);
-										m.nodes[i][j].setBlocked(1);
+										setHighwayOnNode(m.nodes[i][j], 3);
 										m.nodes[i][j].setToHardToTraverse();
-										m.nodes[i][j].highwayNumber = 3;
 										break;
 									case "b4":
-										m.nodes[i][j].setHighway(true);
-										m.nodes[i][j].setBlocked(1);
+										setHighwayOnNode(m.nodes[i][j], 4);
 										m.nodes[i][j].setToHardToTraverse();
-										m.nodes[i][j].highwayNumber = 4;
 										break;
 										
 									}
@@ -265,8 +249,13 @@ public class mainFile {
 		}
 	}
 
+	private static void setHighwayOnNode(Node node, int i) {
+		node.setHighway(true);
+		node.setBlocked(1);
+		node.highwayNumber = 4;
+	}
+
 	private static void printResults(AStar weightAStar) {
-		// TODO Auto-generated method stub
 		System.out.println("------RESULTS-----");
 		System.out.println("Run time = " + weightAStar.totalTime);
 		System.out.println("Path Cost = " + weightAStar.pathCost);
