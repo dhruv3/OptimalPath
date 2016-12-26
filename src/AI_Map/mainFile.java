@@ -183,15 +183,7 @@ public class mainFile {
 							weight = 0.0f;
 							char c = 'c';
 							AStar UCS = new AStar(m, weight, c);
-							System.out.println("------RESULTS-----");
-							System.out.println("Run time = " + UCS.totalTime);
-							System.out.println("Path Cost = " + UCS.pathCost);
-							System.out.println("Path length = " + UCS.path.size());
-							System.out.println("Total number of nodes expanded = " + UCS.Close.size());
-							memoryRequirement = (UCS.Close.size() + UCS.Fringe.getSize());
-							System.out.println("Total memory requirement = " + memoryRequirement);
-							System.out.println("Run time = " + UCS.totalTime);
-
+							printResults(UCS);
 							m.renderMaze();
 							break;
 						
@@ -207,14 +199,7 @@ public class mainFile {
 							c = (char)breader.read();
 							weight = 1.0f;
 							AStar aastar = new AStar(m, weight, c);
-							System.out.println("------RESULTS-----");
-							System.out.println("Run time = " + aastar.totalTime);
-							System.out.println("Path Cost = " + aastar.pathCost);
-							System.out.println("Path length = " + aastar.path.size());
-							System.out.println("Total number of nodes expanded = " + aastar.Close.size());
-							memoryRequirement = (aastar.Close.size() + aastar.Fringe.getSize());
-							System.out.println("Total memory requirement = " + memoryRequirement);
-							System.out.println("Run time = " + aastar.totalTime);
+							printResults(aastar);
 							m.renderMaze();
 							break;
 							
@@ -234,14 +219,7 @@ public class mainFile {
 							
 							c = (char)breader.read();
 							AStar weightAStar = new AStar(m, weight, c);
-							System.out.println("------RESULTS-----");
-							System.out.println("Run time = " + weightAStar.totalTime);
-							System.out.println("Path Cost = " + weightAStar.pathCost);
-							System.out.println("Path length = " + weightAStar.path.size());
-							System.out.println("Total number of nodes expanded = " + weightAStar.Close.size());
-							memoryRequirement = (weightAStar.Close.size() + weightAStar.Fringe.getSize());
-							System.out.println("Total memory requirement = " + memoryRequirement);
-							System.out.println("Run time = " + weightAStar.totalTime);
+							printResults(weightAStar);
 							m.renderMaze();
 							break;
 						case 4:
@@ -285,6 +263,18 @@ public class mainFile {
 					break;
 			}
 		}
+	}
+
+	private static void printResults(AStar weightAStar) {
+		// TODO Auto-generated method stub
+		System.out.println("------RESULTS-----");
+		System.out.println("Run time = " + weightAStar.totalTime);
+		System.out.println("Path Cost = " + weightAStar.pathCost);
+		System.out.println("Path length = " + weightAStar.path.size());
+		System.out.println("Total number of nodes expanded = " + weightAStar.Close.size());
+		float memoryRequirement = (weightAStar.Close.size() + weightAStar.Fringe.getSize());
+		System.out.println("Total memory requirement = " + memoryRequirement);
+		System.out.println("Run time = " + weightAStar.totalTime);
 	}
 }
 
